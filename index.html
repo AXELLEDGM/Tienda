@@ -2,40 +2,127 @@
 <html lang="es">
 <head>
   <meta charset="UTF-8">
-  <title>TacitasByAx</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>D&J — Detalles Personalizados</title>
   <link rel="stylesheet" href="style.css">
 </head>
 <body>
 
-  <header>
-    <h1>☕ Tazas Personalizadas</h1>
-    <p>Diseños únicos hechos con amor</p>
+  <!-- HEADER -->
+  <header class="main-header">
+    <div class="container-header">
+      <div class="logo-header">
+        <a href="/">
+          <img src="logo tacita.png" alt="Logo D&J">
+          D&J Detalles <span>Personalizados</span>
+        </a>
+      </div>
+      <nav class="nav-header">
+        <input type="checkbox" id="menu-toggle">
+        <label for="menu-toggle" class="hamburger">
+          <span></span>
+          <span></span>
+          <span></span>
+        </label>
+        <ul class="main-menu">
+          <li><a href="#">Inicio</a></li>
+          <li><a href="#productos">Productos</a></li>
+          <li><a href="#contacto">Contacto</a></li>
+          <li>
+            <a href="https://www.instagram.com/invites/contact/?utm_source=ig_contact_invite&utm_medium=copy_link&utm_content=mtu1cyw" target="_blank" class="ig-link">
+              <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="2" width="20" height="20" rx="5" ry="5"/><circle cx="12" cy="12" r="4"/><circle cx="17.5" cy="6.5" r="1" fill="currentColor" stroke="none"/></svg>
+            </a>
+          </li>
+        </ul>
+      </nav>
+    </div>
   </header>
 
-  <section class="productos">
-    <div class="producto">
-      <img src="tazas personalizadas.png" alt="Taza 1">
-      <h3>Taza personalizada</h3>
-      <p>$70 MXN</p>
-      <button onclick="comprar()">Pedir</button>
-    </div>
+  <!-- HERO -->
+  <section class="hero">
+    <h1>Tazas con tu toque ✨</h1>
+    <p>Diseños únicos y personalizados, hechos con amor. El regalo perfecto para cualquier ocasión.</p>
+    <a href="#productos"><button class="btn-primary">Ver catálogo</button></a>
+  </section>
 
-    <div class="producto">
-      <img src="tazas normales.png" alt="Taza 2">
-      <h3>Tazas de temporada</h3>
-      <p>$60 MXN</p>
-      <button onclick="comprar()">Pedir</button>
+  <!-- CATÁLOGO -->
+  <section class="productos" id="productos">
+    <h2 class="section-title">Nuestros productos</h2>
+    <div class="productos-grid">
+
+      <!-- Producto 1 -->
+      <div class="producto">
+        <div class="carrusel" data-index="0">
+          <button class="carrusel-btn prev" onclick="moverCarrusel(this, -1)">&#8249;</button>
+          <div class="carrusel-track">
+            <img src="tazas personalizadas.png" alt="Taza personalizada">
+            <img src="textopersonal.png" alt="Taza con texto">
+            <img src="fotospersonalizada.png" alt="Taza con foto">
+          </div>
+          <button class="carrusel-btn next" onclick="moverCarrusel(this, 1)">&#8250;</button>
+          <div class="carrusel-dots">
+            <span class="dot activo"></span>
+            <span class="dot"></span>
+            <span class="dot"></span>
+          </div>
+        </div>
+        <span class="badge">Popular</span>
+        <h3>Taza personalizada</h3>
+        <p class="precio">$70 MXN</p>
+        <button class="btn-primary" onclick="comprar()">Pedir</button>
+      </div>
+
+      <!-- Producto 2 -->
+      <div class="producto">
+        <div class="carrusel" data-index="0">
+          <button class="carrusel-btn prev" onclick="moverCarrusel(this, -1)">&#8249;</button>
+          <div class="carrusel-track">
+            <img src="tazas normales.png" alt="Taza de temporada">
+            <img src="navidad.png" alt="Taza navideña">
+          </div>
+          <button class="carrusel-btn next" onclick="moverCarrusel(this, 1)">&#8250;</button>
+          <div class="carrusel-dots">
+            <span class="dot activo"></span>
+            <span class="dot"></span>
+          </div>
+        </div>
+        <span class="badge">Temporada</span>
+        <h3>Taza de temporada</h3>
+        <p class="precio">$60 MXN</p>
+        <button class="btn-primary" onclick="comprar()">Pedir</button>
+      </div>
+
     </div>
   </section>
 
-  <section class="contacto">
-    <h2>Contáctame</h2>
-    <p>Haz tu pedido por Instagram</p>
-    <a href="https://wa.me/521XXXXXXXXXX" target="_blank">
-      <button>Enviar mensaje</button>
+  <!-- CONTACTO -->
+  <section class="contacto" id="contacto">
+    <h2>¿Lista para pedir?</h2>
+    <p>Haz tu pedido directo por Instagram</p>
+    <a href="https://www.instagram.com/invites/contact/?utm_source=ig_contact_invite&utm_medium=copy_link&utm_content=mtu1cyw" target="_blank">
+      <button class="btn-primary btn-ig">
+        <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="2" width="20" height="20" rx="5" ry="5"/><circle cx="12" cy="12" r="4"/><circle cx="17.5" cy="6.5" r="1" fill="currentColor" stroke="none"/></svg>
+        Enviar mensaje
+      </button>
     </a>
   </section>
 
   <script src="script.js"></script>
+  <script>
+    function moverCarrusel(btn, direccion) {
+      const carrusel = btn.closest('.carrusel');
+      const track = carrusel.querySelector('.carrusel-track');
+      const imgs = track.querySelectorAll('img');
+      const dots = carrusel.querySelectorAll('.dot');
+      let idx = parseInt(carrusel.dataset.index);
+
+      idx = (idx + direccion + imgs.length) % imgs.length;
+      carrusel.dataset.index = idx;
+
+      track.style.transform = `translateX(-${idx * 100}%)`;
+      dots.forEach(d => d.classList.remove('activo'));
+      dots[idx].classList.add('activo');
+    }
+  </script>
 </body>
 </html>
